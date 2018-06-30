@@ -5,4 +5,6 @@ The string of stocks then seperated by the commas to search for each one individ
 
 This information is used to graph the stocks performan from the dates available; later, the stock's Moving Average Convergence and Divergence (MACD) and Relative Strength Index (RSI) are calculated and graphed on the chart. This will be done for all stocks inputed by the user.
 
-The MACD and RSI are calculated using pandas builtin functions.
+The MACD and RSI are calculated using pandas and it's built-in functions.
+
+Code for this project will be gradually added.
