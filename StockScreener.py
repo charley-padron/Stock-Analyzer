@@ -18,6 +18,12 @@ import requests
 #And perform calculations for MACD and RSI
 import numpy as np 
 
+#USed to print JSON stock data
+import json
+
+#Used to print clean version of JSON
+import pprint
+
 class Application(Frame):
     
     def __init__(self, master):
@@ -62,10 +68,40 @@ class Application(Frame):
         stocks = stocks.split(',')
         for stock in stocks:
            print(stock)
+           #retrive stock data
+           self.retrieve(stock)
+           self.graph(stock)
            
         #matplotlib in  tkinter
         #try each symbol, if symbol not found 
         #return error and continue through list
+    
+    def retrieve(self, stock):
+        
+        #Stock Data website
+        URL = "https://www.alphavantage.co/query"
+        
+        function = "TIME_SERIES_DAILY"
+        symbol = stock
+        #private key
+        api_key = ""
+        
+        #Specifics for data retrieval
+        #Retieves data for the past 100 days
+        param = { "function" : function, "symbol" : symbol, "apikey" : api_key}
+        
+        #Holds JSON format of stock data
+        data = requests.get(URL, params = param)
+        
+        pprint.pprint(data.json())
+        
+        #make new function named graph that gets called in stock
+        #graph calls retreive and graphs the stock in matplotlib and formats it as a ne    
+        #window for each stock
+       
+       # Funciton to graph the stocks data and implement it as a window for each stock 
+    def graph(self, stock):
+        print("Graphing data for: " + stock)
 
 root = Tk()
 root.title("Stock Screener")
