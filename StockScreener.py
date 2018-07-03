@@ -2,14 +2,18 @@
 from tkinter import *
 
 #Used for plotting the stock data
-import matplotlib as plt
+import matplotlib
+import matplotlib.pyplot as plt
 
 #Used to access stock data
-import alpha_vantage
+from alpha_vantage.timeseries import TimeSeries
+
+#import alpha_vantage
 
 #alpha_vantage key
 #is private to indivduals 
 #and required to access alpha_vantage
+#Allows access to 5 calls per minute
 
 #Used to get the stock data in JSON format 
 import requests
@@ -66,11 +70,16 @@ class Application(Frame):
     def stock(self, stocks):
         print(stocks + " new")
         stocks = stocks.split(',')
+        #private key
+        api_key = "CIMPVGZNM1U984KM"
         for stock in stocks:
            print(stock)
            #retrive stock data
-           self.retrieve(stock)
-           self.graph(stock)
+           #self.retrieve(stock)
+           #used to get data in a different format to plot
+           ts = TimeSeries(key=api_key, output_format='pandas')
+           info, meta_data = ts.get_daily(symbol=stock)
+           self.graph(info, stock)
            
         #matplotlib in  tkinter
         #try each symbol, if symbol not found 
@@ -84,7 +93,7 @@ class Application(Frame):
         function = "TIME_SERIES_DAILY"
         symbol = stock
         #private key
-        api_key = ""
+        api_key = "CIMPVGZNM1U984KM"
         
         #Specifics for data retrieval
         #Retieves data for the past 100 days
@@ -93,15 +102,19 @@ class Application(Frame):
         #Holds JSON format of stock data
         data = requests.get(URL, params = param)
         
+        #Pretty Print of JSON
         pprint.pprint(data.json())
         
         #make new function named graph that gets called in stock
         #graph calls retreive and graphs the stock in matplotlib and formats it as a ne    
-        #window for each stock
+        #window for each stock   
        
        # Funciton to graph the stocks data and implement it as a window for each stock 
-    def graph(self, stock):
+    def graph(self, info, stock):
         print("Graphing data for: " + stock)
+        info['4. close'].plot()
+        plt.title('Daily Close For ' + stock)
+        plt.show()
 
 root = Tk()
 root.title("Stock Screener")
