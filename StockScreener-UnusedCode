@@ -1,0 +1,33 @@
+#def retrieve(self, stock):
+        
+        #Stock Data website
+        #URL = "https://www.alphavantage.co/query"
+        
+        #function = "TIME_SERIES_DAILY"
+        #symbol = stock
+        #private key
+        #api_key = ""
+        
+        #Specifics for data retrieval
+        #Retieves data for the past 100 days
+        #param = { "function" : function, "symbol" : symbol, "apikey" : api_key}
+        
+        #Holds JSON format of stock data
+        #data = requests.get(URL, params = param)
+        
+        #Pretty Print of JSON
+        #pprint.pprint(data.json())
+        
+        #make new function named graph that gets called in stock
+        #graph calls retreive and graphs the stock in matplotlib and formats it as a ne    
+        #window for each stock   
+       
+       # Funciton to graph the stocks data and implement it as a window for each stock 
+    #def graph(self, info, stock):
+       
+        #print("Graphing data for: " + stock)
+        #info['4. close'].plot()
+        #plt.figure()
+        #plt.title('Daily Close For ' + stock)
+        #plt.figure()
+        #plt.show()

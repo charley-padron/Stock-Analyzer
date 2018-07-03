@@ -47,7 +47,7 @@ class Application(Frame):
         self.entry = Entry(self)
         self.entry.pack()
         
-        print(self.entry.get())
+        #print(self.entry.get())
         
         self.button1 = Button(self, text = "Search Stocks", command = self.on_button)
         self.button1.place(x=340,y=65)
@@ -71,7 +71,8 @@ class Application(Frame):
         print(stocks + " new")
         stocks = stocks.split(',')
         #private key
-        api_key = "CIMPVGZNM1U984KM"
+        api_key = ""
+        
         for stock in stocks:
            print(stock)
            #retrive stock data
@@ -79,43 +80,15 @@ class Application(Frame):
            #used to get data in a different format to plot
            ts = TimeSeries(key=api_key, output_format='pandas')
            info, meta_data = ts.get_daily(symbol=stock)
-           self.graph(info, stock)
+           print("Graphing data for: " + stock)
+           info['4. close'].plot()
+           plt.title('Daily Close For ' + stock)
+           #self.graph(info, stock)
+           print(info['5. volume'])
+           plt.show()
            
         #matplotlib in  tkinter
-        #try each symbol, if symbol not found 
-        #return error and continue through list
     
-    def retrieve(self, stock):
-        
-        #Stock Data website
-        URL = "https://www.alphavantage.co/query"
-        
-        function = "TIME_SERIES_DAILY"
-        symbol = stock
-        #private key
-        api_key = "CIMPVGZNM1U984KM"
-        
-        #Specifics for data retrieval
-        #Retieves data for the past 100 days
-        param = { "function" : function, "symbol" : symbol, "apikey" : api_key}
-        
-        #Holds JSON format of stock data
-        data = requests.get(URL, params = param)
-        
-        #Pretty Print of JSON
-        pprint.pprint(data.json())
-        
-        #make new function named graph that gets called in stock
-        #graph calls retreive and graphs the stock in matplotlib and formats it as a ne    
-        #window for each stock   
-       
-       # Funciton to graph the stocks data and implement it as a window for each stock 
-    def graph(self, info, stock):
-        print("Graphing data for: " + stock)
-        info['4. close'].plot()
-        plt.title('Daily Close For ' + stock)
-        plt.show()
-
 root = Tk()
 root.title("Stock Screener")
 root.geometry("800x500")
