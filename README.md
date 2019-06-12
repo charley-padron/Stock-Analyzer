@@ -7,6 +7,23 @@ is read by an automated trading program using E-Trade's API to determine if the 
 More features will be added with the next versions, such as adding a database to remove the need for CSV files, complete further analysis
 of the stocks, and finally integrating this program with the automated trading program.
 
+# Running the Program
+
+This program requires you to have pandas, requests and json libraries.
+
+If you don't have them, open up command line on Windows and type in pip install *Library Name*. For example, if you don't have requests
+just type in pip install requests. 
+
+Next, you'll need an API key from IEX, they have different tiers including a free teir. 
+The key can be obtained here: https://iextrading.com/developer/
+
+After you have all the required libraries and an API key, you'll need to edit the config file. Underneath [DEFAULT] you can see KEY = , 
+after the equal sign enter your secret key and under PUB_KEY = , you can add your publishable key.
+
+Next download the python file, config file and the SP500Data.csv files and make sure they are all on the same directory.
+
+Now you can run the python program.
+
 This is the second version of this project. Previosly, I had used alpha vantage to get the historical data of stocks listed under
 the S&P 500 index. Alpha vantage had the disadvantage of only allowing 5 calls per minute which would cause the program to take
 100 minutes to get the historical data for the constituents of the S&P 500. 
