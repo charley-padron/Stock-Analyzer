@@ -22,5 +22,7 @@ https://iexcloud.io
 
 ## Useful Links:
 https://www.investopedia.com/terms/r/rsi.asp
+
 https://www.investopedia.com/terms/m/macd.asp
+
 http://cns.bu.edu/~gsc/CN710/fincast/Technical%20_indicators/Relative%20Strength%20Index%20(RSI).htm
