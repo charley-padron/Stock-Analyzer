@@ -20,6 +20,11 @@ The key can be obtained here: https://iextrading.com/developer/
 After you have all the required libraries and an API key, you'll need to edit the config file. Underneath [DEFAULT] you can see KEY = , 
 after the equal sign enter your secret key and under PUB_KEY = , you can add your publishable key.
 
+There is a sandbox and production URL, by default this one uses the sandbox environment for testing. To use real data, in the python code change the the variables to be:
+key=config["DEFAULT"]["KEY"]
+pub_key=config["DEFAULT"]["PUB_KEY"]
+url = config["DEFAULT"]["BASE_URL"]
+
 Next download the python file, config file and the SP500Data.csv files and make sure they are all on the same directory.
 
 Now you can run the python program.
