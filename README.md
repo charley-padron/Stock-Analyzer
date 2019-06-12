@@ -2,7 +2,7 @@
 
 This program analyzes the constituents of the S&P 500 by calculating the MACD and RSI to determine if the stock is in oversold
 or overbought conditions. The historical data is from IEX in JSON format. The stock symbol, MACD, and RSI are saved to a CSV file that
-is read by another program to determine if the stock should be bought. 
+is read by an automated trading program using E-Trade's API to determine if the stock should be bought or shorted. 
 
 More features will be added with the next versions, such as adding a database to remove the need for CSV files, complete further analysis
 of the stocks, and finally integrating this program with the automated trading program.
